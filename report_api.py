@@ -87,7 +87,7 @@ def get_days_result_in_1percent_error():
   print("")
   print("----------------------------------------------------")
   for i in days:
-    print(str(i[0])+"  ---  "+str(round(i[1], 2))+"percent errors")
+    print(str(i[0])+"  ---  "+str(round(i[1], 2))+"% errors")
   print("")
   db.close()
   return days
