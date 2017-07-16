@@ -3,7 +3,7 @@
 ### This is a command line application that provides simple reporting interface for this project
 
 ### Prerequisite
-1. You must use the VM provided by this course project in order to save the hassle on setting everything up individually.
+1. You must use the VM provided by this course project.
 
 ## Steps to run the application
 1. vagrant ssh into the VM environment
