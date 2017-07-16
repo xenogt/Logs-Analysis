@@ -3,12 +3,11 @@
 ### This is a command line application that provides simple reporting interface for this project
 
 ### Prerequisite
-1. You must use the VM provided by this course project in order to save the hassle on setting everything up individually.
+1. You must use the VM provided by this course project.
 
 ## Steps to run the application
 1. vagrant ssh into the VM environment
-2. clone the code 
-  1. command: `git clone https://github.com/xenogt/Logs-Analysis.git`
+2. clone the code `git clone https://github.com/xenogt/Logs-Analysis.git`
 3. navigate to folder `cd Logs-Analysis`
 4. run the application `python report_tool.py`
 5. follow onscreen menu
