@@ -4,6 +4,10 @@ import psycopg2, bleach
 
 DBNAME = "news"
 
+'''
+runs the query to fetch top 3 articles' title that have most
+views, prints the resulting titles with most viewed title first
+'''
 def get_top_3_viewed_articles():
   """Return all posts from the 'database', most recent first."""
   db = psycopg2.connect(database=DBNAME)
@@ -23,6 +27,11 @@ def get_top_3_viewed_articles():
   db.close()
   return articles
 
+'''
+runs the query to fetch authors' names and combined number of views
+on articles per arthor. Prints the resulting data, authors with most
+combined views of articles would be displayed on top.
+'''
 def get_most_popular_author_list():
   """Return all posts from the 'database', most recent first."""
   db = psycopg2.connect(database=DBNAME)
@@ -45,6 +54,10 @@ def get_most_popular_author_list():
   db.close()
   return authors
 
+'''
+runs query to find days that has more than 1% of access result in
+error. Prints the information on screen.
+'''
 def get_days_result_in_1percent_error():
   db = psycopg2.connect(database=DBNAME)
   c = db.cursor()
@@ -74,7 +87,7 @@ def get_days_result_in_1percent_error():
   print("")
   print("----------------------------------------------------")
   for i in days:
-    print(str(i[0])+"  ---  "+str(round(i[1], 2))+"% errors")
+    print(str(i[0])+"  ---  "+str(round(i[1], 2))+"percent errors")
   print("")
   db.close()
   return days

@@ -1,8 +1,15 @@
 import report_api as api
-import sys
 
+'''
+This method presents the initial screen when running the application. It 
+will show the user a list of project questions and allows the user to
+select the item which will triggers the corresponding query to run to return
+useful information.
+'''
 def show_menu():
     leave = False
+
+    # loops forever until leave === True
     while(leave==False):
         Q1 = "1 - What are the most popular three articles of all time?"
         Q2 = "2 - Who are the most popular article authors of all time?"
@@ -22,6 +29,7 @@ def show_menu():
         print("")
         a = raw_input("Please select: ")
         print("")
+
         if str(a) == "1":
             print("REPORT "+Q1)
             api.get_top_3_viewed_articles()
