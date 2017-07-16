@@ -1,14 +1,20 @@
 # Logs-Analysis
 
-## 1. What are the most popular three articles of all time? 
-/code select title, slug, count(*) as num from log a join articles b on substring(a.path, 10)=b.slug group by b.slug, b.title order by num desc limit 3;
+### This is a command line application that provides simple reporting interface for this project
 
- ###candidate-is-jerk         | 338647
- ###bears-love-berries        | 253801
- ###bad-things-gone           | 170098
+### Prerequisite
+1. You must use the VM provided by this course project in order to save the hassle on setting everything up individually.
 
-## 2. Who are the most popular article authors of all time?
+## Steps to run the application
+1. vagrant ssh into the VM environment
+2. clone the code 
+  1. command: `git clone https://github.com/xenogt/Logs-Analysis.git`
+3. navigate to folder `cd Logs-Analysis`
+4. run the application `python report_tool.py`
+5. follow onscreen menu
 
-select authors.name from authors as authors, (select author from (select author, count(*) as num from log a join articles b on substring(a.path, 10)=b.slug group by b.author order by num desc) as result) as result_author where authors.id=result_author.author;
-
-## 3. On which days did more than 1% of requests lead to errors?
+## Guide to use the application
+- once the program is run, you are presented with a simple user menu that has the questions asked in the project
+- selecting the corresponding numbers for each item will display the result from running a given query.
+- selecting a invalid number will return you to the main menu list
+- select exit to leave the program.
