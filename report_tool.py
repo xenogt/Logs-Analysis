@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import report_api as api
 
 
@@ -48,4 +50,6 @@ def show_menu():
         else:
             raw_input("invalid input, press any key to continue ...")
 
-show_menu()
+def main():
+    if __name__ == '__main__':
+    show_menu()
