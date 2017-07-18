@@ -37,11 +37,11 @@ def get_top_3_viewed_articles():
     runs the query to fetch top 3 articles' title that have most
     views, prints the resulting titles with most viewed title first
     '''
-    query = "select title as title, num as count from " +
-            "(select title, slug, count(*) as num " +
-            "from log a join articles b on substring(a.path, 10)=b.slug " +
-            "group by b.slug, b.title order by num desc limit 3) " +
-            "result;")
+    query = "select title as title, num as count from " \
+            "(select title, slug, count(*) as num " \
+            "from log a join articles b on substring(a.path, 10)=b.slug " \
+            "group by b.slug, b.title order by num desc limit 3) " \
+            "result;"
     articles = get_query_results(query)
 
     print("")
@@ -58,14 +58,14 @@ def get_most_popular_author_list():
     on articles per arthor. Prints the resulting data, authors with most
     combined views of articles would be displayed on top.
     '''
-    query = "select name, result_author.num " +
-            "from authors, " +
-            "(select author, count(*) as num " +
-            "from log a join articles b on substring(a.path, 10)=b.slug " +
-            "group by b.author " +
-            "order by num desc)" +
-            "as result_author " +
-            "where id=result_author.author;")
+    query = "select name, result_author.num " \
+        "from authors, " \
+        "(select author, count(*) as num " \
+        "from log a join articles b on substring(a.path, 10)=b.slug " \
+        "group by b.author " \
+        "order by num desc)" \
+        "as result_author " \
+        "where id=result_author.author;"
     authors = get_query_results(query)
 
     print("")
@@ -81,18 +81,18 @@ def get_days_result_in_1percent_error():
     runs query to find days that has more than 1% of access result in
     error. Prints the information on screen.
     '''
-    query = "select c.t, c.errors from" +
-            "(select a.t1::timestamp::date as t, " +
-            "(a.error::decimal/b.total)*100 as errors " +
-            "from (select " +
-            "time::timestamp::date as t1, " +
-            "count(time::timestamp::date) as error " +
-            "from log where status like '%404%' " +
-            "group by time::timestamp::date) a, " +
-            "(select time::timestamp::date as t2, " +
-            "count(time::timestamp::date) as total " +
-            "from log group by time::timestamp::date) b " +
-            "where a.t1=b.t2) c where c.errors > 1;")
+    query = "select c.t, c.errors from" \
+        "(select a.t1::timestamp::date as t, " \
+        "(a.error::decimal/b.total)*100 as errors " \
+        "from (select " \
+        "time::timestamp::date as t1, " \
+        "count(time::timestamp::date) as error " \
+        "from log where status like '%404%' " \
+        "group by time::timestamp::date) a, " \
+        "(select time::timestamp::date as t2, " \
+        "count(time::timestamp::date) as total " \
+        "from log group by time::timestamp::date) b " \
+        "where a.t1=b.t2) c where c.errors > 1;"
     days = get_query_results(query)
     
     print("")

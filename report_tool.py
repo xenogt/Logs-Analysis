@@ -50,6 +50,7 @@ def show_menu():
         else:
             raw_input("invalid input, press any key to continue ...")
 
-def main():
-    if __name__ == '__main__':
+
+if __name__ == '__main__':
     show_menu()
+
